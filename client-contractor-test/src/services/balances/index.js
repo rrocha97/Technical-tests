@@ -1,5 +1,3 @@
-const { ContractStatus, ProfileTypes } = require('../../constants')
-const Job = require('../../repositories/jobs')
 const Profile = require('../../repositories/profiles')
 const Jobs = require('../../services/jobs')
 const ProfileService = require('../../services/profiles')
@@ -22,7 +20,7 @@ const isDespositExcessLimit = (Unpaidjobs, money) => {
 const postDepositToClient = async (userId, money, profile) => {
     await verifiedDeposit(money, profile)
     if (profile.balance <= money) {
-        throw ('the client cannnot afford this deposit')
+        throw ('the client cannot afford this deposit')
     }
     let userProfile = await ProfileService.findProfileByid(userId)
     await Profile.updateBalance(profile.id, -money)

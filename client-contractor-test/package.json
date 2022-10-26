@@ -4,13 +4,19 @@
     "private": true,
     "dependencies": {
         "body-parser": "^1.19.0",
+        "chai": "^4.3.6",
         "express": "4.17.1",
+        "jest": "^29.2.2",
         "sequelize": "^6.25.3",
+        "sinon": "^14.0.1",
         "sqlite3": "^5.1.2"
     },
     "scripts": {
         "start": "nodemon ./src/server.js",
         "seed": "node ./scripts/seedDb.js",
+        "dev": "node ./scripts/seedDb.js && nodemon ./src/server.js",
+        "test": "jest --watch",
+        "coverage": "jest --env=jsdom --coverage",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",

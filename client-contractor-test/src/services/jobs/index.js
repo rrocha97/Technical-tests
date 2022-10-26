@@ -22,7 +22,7 @@ const findJob = async (jobId) => {
 
 const isclientJob = (job, idClient) => {
     if (job.Contract?.ClientId !== idClient) {
-        throw ('this job does not belongs to this job')
+        throw ('this job does not belongs to this client')
     }
 }
 const isJobNeedPaid = (job) => {

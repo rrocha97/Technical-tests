@@ -42,7 +42,7 @@ const bestProfessionReport = async (start, end) => {
 }
 
 
-const bestClientsReport = async (start, end, limit) => {
+const bestClientsReport = async (start, end, limit = 2) => {
     let profileJobs = await Admin.bestClientsReport(start, end);
     let bestClients = calculateClientTotalPaid(profileJobs)
     orderbyMaxTotalPaid(bestClients)

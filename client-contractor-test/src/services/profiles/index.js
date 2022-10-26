@@ -1,11 +1,11 @@
 const Profile = require('../../repositories/profiles')
 
 const findProfileByid = async (profileId) => {
-    let job = await Profile.findOneByid(profileId);
-    if (!job) {
+    let profile = await Profile.findOneByid(profileId);
+    if (!profile) {
         throw ('this profile does not exist')
     }
-    return job
+    return profile
 }
 
 module.exports = {
