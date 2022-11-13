@@ -10,7 +10,7 @@ export async function getCurrencies(): Promise<any[]> {
   let result: Currency[] = [];
   try {
     let { data: { data } } = await axios
-      .get('dasfas', {
+      .get(BITCOIN_API_URL, {
         headers: {
           'X-CMC_PRO_API_KEY': COINMARKET_API_KEY
         },
