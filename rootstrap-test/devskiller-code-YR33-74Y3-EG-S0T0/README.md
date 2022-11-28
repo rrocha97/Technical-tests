@@ -47,3 +47,17 @@ Run `yarn test` to run tests.
 
 Run `yarn dev` to start and automatically detect any source-code changes,
 restarting the server as well.
+
+## recomendation for production evironment
+
+## recommendation for production environment
+
+change the node-schedule module by redis implementation for cache propose
+
+- adding unit test for each module created in the service
+
+- defined de the type of our schema field and reduce the "Any" inside the code
+
+-  if our API would be recurrent required, I would implement a throttling  to protect our it for attracts
+
+- when the cache expires make that at least one request will go to the site, and the another one hold on until the cache will refreshed again

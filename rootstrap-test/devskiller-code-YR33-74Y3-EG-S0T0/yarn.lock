@@ -944,6 +944,11 @@
   "resolved" "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz"
   "version" "2.2.0"
 
+"bluebird@3.7.2":
+  "integrity" "sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg=="
+  "resolved" "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz"
+  "version" "3.7.2"
+
 "body-parser@1.19.0":
   "integrity" "sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw=="
   "resolved" "https://registry.npmjs.org/body-parser/-/body-parser-1.19.0.tgz"
@@ -1381,6 +1386,13 @@
   dependencies:
     "ms" "2.1.2"
 
+"debug@^4.3.2":
+  "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="
+  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
+  "version" "4.3.4"
+  dependencies:
+    "ms" "2.1.2"
+
 "decamelize@^1.2.0":
   "integrity" "sha1-9lNNFRSCabIDUue+4m9QH5oZEpA= sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA=="
   "resolved" "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz"
@@ -1449,6 +1461,11 @@
   "integrity" "sha1-3zrhmayt+31ECqrgsp4icrJOxhk= sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
   "resolved" "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   "version" "1.0.0"
+
+"denque@^1.5.0":
+  "integrity" "sha512-XwE+iZ4D6ZUB7mfYRMb5wByE8L74HCn30FBN7sWnXksWc1LO1bPDl67pBR9o/kC4z/xSNAwkMYcGgqDV3BE3Hw=="
+  "resolved" "https://registry.npmjs.org/denque/-/denque-1.5.1.tgz"
+  "version" "1.5.1"
 
 "depd@~1.1.2":
   "integrity" "sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak= sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ=="
@@ -3209,6 +3226,23 @@
     "uuid" "^8.3.0"
     "which" "^2.0.2"
 
+"node-ts-cache-storage-memory@^4.4.0":
+  "integrity" "sha512-eG8tFF4C1/RBmx52cS/dEu63l+Cn+Z6mz16nuTJwNyvtvDHWjsKKM3hg77PA7ddgf2ztaCyen8ZMQnLy191S4g=="
+  "resolved" "https://registry.npmjs.org/node-ts-cache-storage-memory/-/node-ts-cache-storage-memory-4.4.0.tgz"
+  "version" "4.4.0"
+  dependencies:
+    "debug" "^4.3.2"
+    "node-ts-cache" "^4.4.0"
+
+"node-ts-cache@^4.4.0":
+  "integrity" "sha512-ZULcxpzyFfgpOd33PHjwhPz4fkWSfyrwa9sq1j4jyOm+PaBpQDIzB3m5HRiSKdgEBtQhP3g6hX44dnMjnoHiPA=="
+  "resolved" "https://registry.npmjs.org/node-ts-cache/-/node-ts-cache-4.4.0.tgz"
+  "version" "4.4.0"
+  dependencies:
+    "bluebird" "3.7.2"
+    "debug" "^4.3.2"
+    "redis" "^3.1.2"
+
 "nodemon@^2.0.7":
   "integrity" "sha512-XHzK69Awgnec9UzHr1kc8EomQh4sjTQ8oRf8TsGrSmHDx9/UmiGG9E/mM3BuTfNeFwdNBvrqQq/RHL0xIeyFOA=="
   "resolved" "https://registry.npmjs.org/nodemon/-/nodemon-2.0.7.tgz"
@@ -3612,6 +3646,33 @@
   "version" "3.5.0"
   dependencies:
     "picomatch" "^2.2.1"
+
+"redis-commands@^1.7.0":
+  "integrity" "sha512-nJWqw3bTFy21hX/CPKHth6sfhZbdiHP6bTawSgQBlKOVRG7EZkfHbbHwQJnrE4vsQf0CMNE+3gJ4Fmm16vdVlQ=="
+  "resolved" "https://registry.npmjs.org/redis-commands/-/redis-commands-1.7.0.tgz"
+  "version" "1.7.0"
+
+"redis-errors@^1.0.0", "redis-errors@^1.2.0":
+  "integrity" "sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w=="
+  "resolved" "https://registry.npmjs.org/redis-errors/-/redis-errors-1.2.0.tgz"
+  "version" "1.2.0"
+
+"redis-parser@^3.0.0":
+  "integrity" "sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A=="
+  "resolved" "https://registry.npmjs.org/redis-parser/-/redis-parser-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "redis-errors" "^1.0.0"
+
+"redis@^3.1.2":
+  "integrity" "sha512-grn5KoZLr/qrRQVwoSkmzdbw6pwF+/rwODtrOr6vuBRiR/f3rjSTGupbF90Zpqm2oenix8Do6RV7pYEkGwlKkw=="
+  "resolved" "https://registry.npmjs.org/redis/-/redis-3.1.2.tgz"
+  "version" "3.1.2"
+  dependencies:
+    "denque" "^1.5.0"
+    "redis-commands" "^1.7.0"
+    "redis-errors" "^1.2.0"
+    "redis-parser" "^3.0.0"
 
 "regex-not@^1.0.0", "regex-not@^1.0.2":
   "integrity" "sha512-J6SDjUgDxQj5NusnOtdFxDwN/+HWykR8GELwctJ7mdqhcyy1xEc4SRFHUXvxTp661YaVKAjfRLZ9cCqS6tn32A=="

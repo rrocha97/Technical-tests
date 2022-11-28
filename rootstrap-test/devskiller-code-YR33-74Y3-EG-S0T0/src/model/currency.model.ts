@@ -6,15 +6,10 @@ export class Currency {
     public currency_total_supply: any | undefined,
     public currency_last_updated: any | undefined
   ) {
-
-  }
-}
-
-export class Exchange {
-  constructor(
-    public id: any | undefined,
-    public name: any | undefined,
-  ) {
-
+    this.currency_id = currency_id
+    this.currency_name = currency_name
+    this.currency_name = currency_name
+    this.currency_total_supply = currency_total_supply
+    this.currency_last_updated = currency_last_updated
   }
 }
