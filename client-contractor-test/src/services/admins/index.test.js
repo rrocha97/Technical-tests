@@ -4,7 +4,6 @@ const { assert } = sinon
 const Admin = require('../../repositories/admins')
 const adminService = require('.')
 
-
 let mocks = {}
 let professionJobs = [
     {
@@ -249,7 +248,6 @@ describe('calling admin services', () => {
             let result = await adminService.bestClientsReport(new Date(), new Date())
             assert.match(result.length, 2)
             assert.match(result, responseBestClients.slice(0, 2))
-
         })
     })
 })
