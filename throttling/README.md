@@ -58,16 +58,38 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Deployment with Docker Compose
+Make sure you have Docker and Docker Compose installed on your machine.
+
+Create a .env file to store your environment variables. You can use the provided .env.example as a template.
+
+### Start the application using Docker Compose:
+
+`docker-compose build`
+
+`docker-compose up -d`
+
+Your application will be accessible at http://localhost:3000.
+
+
+## Example .env file
+```
+RATE_LIMITER_PUBLIC_URL=100
+RATE_LIMITER_WEIGHT_URL=500
+RATE_LIMITER_PRIVATE_URL=200
+RATE_INTERVAL_PUBLIC_URL_SECONDS=3600
+RATE_INTERVAL_WEIGHT_URL_SECONDS=60
+RATE_INTERVAL_PRIVATE_URL_SECONDS=3600
+PRIVATE_KEY=yourprivatekey
+PORT=3000
+REDIS_HOST=redis
+```
+### API Endpoints
+
+http://localhost:3000/api powered by swagger
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
