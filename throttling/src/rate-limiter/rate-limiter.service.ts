@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRedis, Redis } from '@lucario/nestjs-ioredis';
 import * as crypto from 'crypto';
+import { urlWeight } from './rate-limiter.config';
 
 @Injectable()
 export class RateLimiterService {
@@ -16,7 +17,25 @@ export class RateLimiterService {
       // If it's a new key, set an expiration time
       await this.redis.expire(key, intervalSeconds);
     }
-    if (attempts > limit) {
+    return await this.validateRateLimit(key, attempts, limit);
+  }
+  async isWeightAllowed(
+    key: string,
+    url: string,
+    limit: number,
+    intervalSeconds: number,
+  ): Promise<boolean> {
+    const weight: number = urlWeight[url] || 0;
+    const accumulatedWeight: number = await this.redis.incrby(key, weight);
+    if (accumulatedWeight === weight) {
+      // If it's a new key, set an expiration time
+      await this.redis.expire(key, intervalSeconds);
+    }
+    return await this.validateRateLimit(key, accumulatedWeight, limit);
+  }
+
+  async validateRateLimit(key: string, currentRate: number, limit: number) {
+    if (currentRate > limit) {
       const nextTimeAvailable = await this.retrieveRemainingTime(key);
       throw new HttpException(
         `Too many request, the service will be available in ${nextTimeAvailable} hh:mm:ss`,
@@ -34,10 +53,11 @@ export class RateLimiterService {
       .substring(11, 19);
     return dateFormattedHhMmSs;
   }
-  buildKeyRateLimiter(urlSource : string, identifierUser: string){
-    const key = crypto.createHash('sha256')
-    .update( `${urlSource}_${identifierUser}`)
-    .digest('hex');
-    return key
+  buildKeyRateLimiter(urlSource: string, identifierUser: string) {
+    const key = crypto
+      .createHash('sha256')
+      .update(`${urlSource}_${identifierUser}`)
+      .digest('hex');
+    return key;
   }
 }

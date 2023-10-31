@@ -8,4 +8,7 @@ export class GreetingsService {
   secretHello(): string {
     return 'Secret Hello World!';
   }
+  secretHelloLevel(level:string): string {
+    return `Secret Hello World from level ${level}!`;
+  }
 }

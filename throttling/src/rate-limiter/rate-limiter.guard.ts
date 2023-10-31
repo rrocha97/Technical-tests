@@ -11,7 +11,7 @@ export class RateLimiterPrivateGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     // Get the client's Token
-    const clientToken = request.headers?.authorization;
+    const clientToken = request.headers.api_key;
     // Get the requested URL
     const requestUrl = request.url;
 
@@ -22,8 +22,8 @@ export class RateLimiterPrivateGuard implements CanActivate {
 
     return await this.rateLimiterService.isAllowed(
       key,
-      this.configService.get<number>('limiter_private_url'),
-      this.configService.get<number>('interval_private_url_seconds'),
+      this.configService.get<number>('rate_limiter_private_url'),
+      this.configService.get<number>('rate_interval_private_url_seconds'),
     );
   }
 }
@@ -47,8 +47,34 @@ export class RateLimiterPublicGuard implements CanActivate {
     );
     return await this.rateLimiterService.isAllowed(
       key,
-      this.configService.get<number>('limiter_public_url'),
-      this.configService.get<number>('interval_public_url_seconds'),
+      this.configService.get<number>('rate_limiter_public_url'),
+      this.configService.get<number>('rate_interval_public_url_seconds'),
+    );
+  }}
+
+@Injectable()
+export class RateLimiterWeightGuard implements CanActivate {
+  constructor(
+    private readonly rateLimiterService: RateLimiterService,
+    private readonly configService: ConfigService,
+  ) {}
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const request = context.switchToHttp().getRequest();
+    // Get the client's IP address
+    const clientIp = request.ip;
+    // Get the client's Token
+    const clientToken = request.headers.api_key;
+
+    // Get the requested URL
+    const requestUrl = request.url;
+    const key = this.rateLimiterService.buildKeyRateLimiter("all",
+    clientToken,
+    );
+    return await this.rateLimiterService.isWeightAllowed(
+      key,
+      requestUrl,
+      this.configService.get<number>('rate_limiter_weight_url'),
+      this.configService.get<number>('rate_interval_weight_url_seconds'),
     );
   }
 }
